@@ -32,8 +32,13 @@ public class UsuarioController {
         repository.deleteById(id);
     }
 
+    @DeleteMapping("/usuarios/login/{login}")
+    public void deleteByLogin(@PathVariable("login") String login) {
+        repository.deleteByLogin(login);
+    }
+
     @PostMapping("/usuarios")
-    public void post(@RequestBody Usuario usuario) {
+    public void postUser(@RequestBody Usuario usuario) {
         repository.save(usuario);
     }
 }
