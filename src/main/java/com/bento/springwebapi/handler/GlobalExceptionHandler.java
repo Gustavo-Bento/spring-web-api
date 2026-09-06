@@ -53,9 +53,14 @@ public class GlobalExceptionHandler {
     }
 
     private ResponseEntity<Object> handleBusinessException(BusinessException e, WebRequest request) {
-        String message = e.getMessage() != null
-                ? e.getMessage()
-                : messageSource.getMessage("error.business.default", null, request.getLocale());
+        String message;
+        if (e.getMessage() != null) {
+            message = (e.getArgs() != null && e.getArgs().length > 0)
+                    ? String.format(e.getMessage(), e.getArgs())
+                    : e.getMessage();
+        } else {
+            message = messageSource.getMessage("error.business.default", null, request.getLocale());
+        }
         ResponseError responseError = responseError(message, e.getStatus());
         return new ResponseEntity<>(responseError, headers(), e.getStatus());
     }
