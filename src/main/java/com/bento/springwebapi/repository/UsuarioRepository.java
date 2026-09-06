@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserRepository {
+public class UsuarioRepository {
 
     public void save(Usuario usuario) {
         if(usuario.getId() == null) {

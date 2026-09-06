@@ -3,19 +3,19 @@ package com.bento.springwebapi.model;
 public class Usuario {
 
     private Integer id;
-    private String log;
+    private String login;
     private String password;
 
     public Usuario() {}
-    public Usuario(String log, String password) {
-        this.log = log;
+    public Usuario(String login, String password) {
+        this.login = login;
         this.password = password;
     }
 
     @Override
     public String toString() {
         return "Usuario{" +
-                ", log='" + log + '\'' +
+                ", log='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
@@ -28,12 +28,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getLog() {
-        return log;
+    public String getLogin() {
+        return login;
     }
 
-    public void setLog(String log) {
-        this.log = log;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
