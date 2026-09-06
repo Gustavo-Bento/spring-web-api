@@ -18,7 +18,7 @@ public class UsuarioController {
         return repository.findAll();
     }
 
-    @GetMapping("/{login}")
+    @GetMapping("/login/{login}")
     public Usuario getOne(@PathVariable("login") String login) {
         return repository.findByLogin(login);
     }
@@ -28,7 +28,7 @@ public class UsuarioController {
         return repository.findById(id);
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Integer id) {
         repository.deleteById(id);
     }
