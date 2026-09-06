@@ -23,6 +23,11 @@ public class UsuarioRepository {
         System.out.println(id);
     }
 
+    public void deleteByLogin(String login) {
+        System.out.println(String.format("DELETE/login - Recebendo o login: %s para exclusão", login));
+        System.out.println(login);
+    }
+
     public List<Usuario> findAll() {
         System.out.println("FIND ALL - Recebendo requisição para listar todos os usuários");
         List<Usuario> usuarios = new ArrayList<>();
