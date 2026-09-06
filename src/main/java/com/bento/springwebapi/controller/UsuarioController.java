@@ -8,36 +8,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
 public class UsuarioController {
     @Autowired
     private UsuarioRepository repository;
 
-    @GetMapping("/usuarios")
+    @GetMapping
     public List<Usuario> getUsers() {
         return repository.findAll();
     }
 
-    @GetMapping("/usuarios/{login}")
+    @GetMapping("/{login}")
     public Usuario getOne(@PathVariable("login") String login) {
         return repository.findByLogin(login);
     }
 
-    @GetMapping("/usuarios/id/{id}")
+    @GetMapping("/{id}")
     public Usuario getOneById(@PathVariable("id") Integer id) {
         return repository.findById(id);
     }
 
-    @DeleteMapping("/usuarios/{id}")
+    @DeleteMapping("/users/{id}")
     public void delete(@PathVariable("id") Integer id) {
         repository.deleteById(id);
     }
 
-    @DeleteMapping("/usuarios/login/{login}")
+    @DeleteMapping("/login/{login}")
     public void deleteByLogin(@PathVariable("login") String login) {
         repository.deleteByLogin(login);
     }
 
-    @PostMapping("/usuarios")
+    @PostMapping()
     public void postUser(@RequestBody Usuario usuario) {
         repository.save(usuario);
     }
