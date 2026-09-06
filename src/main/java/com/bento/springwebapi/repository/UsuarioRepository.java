@@ -11,7 +11,7 @@ import java.util.List;
 public class UsuarioRepository {
 
     public void save(Usuario usuario) {
-        if(usuario.getLogin()==null) throw new BusinessException("O campo login é obrigatório");
+        if(usuario.getLogin()==null) throw new CampoObrigatorioException("login");
         if(usuario.getId() == null) {
             System.out.println("SAVE - Recebendo o usuário na camada de repositório");
         }else {
@@ -21,13 +21,13 @@ public class UsuarioRepository {
     }
 
     public void deleteById(Integer id) {
-        if(id == null) throw new BusinessException("O campo id é obrigatório");
+        if(id == null) throw new CampoObrigatorioException("id");
         System.out.println(String.format("DELETE/id - Recebendo o id: %d para exclusão", id));
         System.out.println(id);
     }
 
     public void deleteByLogin(String login) {
-        if(login == null) throw new BusinessException("O campo login é obrigatório");
+        if(login == null) throw new CampoObrigatorioException("login");
         System.out.println(String.format("DELETE/login - Recebendo o login: %s para exclusão", login));
         System.out.println(login);
     }
@@ -43,7 +43,7 @@ public class UsuarioRepository {
     }
 
     public Usuario findById(Integer id) {
-        if(id == null) throw new BusinessException("O campo id é obrigatório");
+        if(id == null) throw new CampoObrigatorioException("id");
         System.out.println(String.format("FIND/id - Recebendo o id: %d para localizar um usuário", id));
         Usuario usuario = new Usuario("joao01", "123");
         System.out.println(usuario);
@@ -51,7 +51,7 @@ public class UsuarioRepository {
     }
 
     public Usuario findByLogin(String login) {
-        if(login == null) throw new BusinessException("O campo login é obrigatório");
+        if(login == null) throw new CampoObrigatorioException("login");
         System.out.println(String.format("FIND/login - Recebendo o login: %s para localizar um usuário", login));
         Usuario usuario = new Usuario(login, "123");
         System.out.println(usuario);
