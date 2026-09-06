@@ -53,8 +53,9 @@ public class GlobalExceptionHandler {
     }
 
     private ResponseEntity<Object> handleBusinessException(BusinessException e, WebRequest request) {
-        String defaultMessage = messageSource.getMessage("error.business.default", null, request.getLocale());
-        String message = messageSource.getMessage(e.getMessage(), e.getArgs(), defaultMessage, request.getLocale());
+        String message = e.getMessage() != null
+                ? e.getMessage()
+                : messageSource.getMessage("error.business.default", null, request.getLocale());
         ResponseError responseError = responseError(message, e.getStatus());
         return new ResponseEntity<>(responseError, headers(), e.getStatus());
     }
